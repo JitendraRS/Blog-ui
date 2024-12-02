@@ -21,6 +21,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.blogService.getAllBlogs().subscribe(data => {
       this.blogs = data;
+    },
+    (error) => {
+      alert('Something went wrong. Please try again later.');
+      console.log('Error while reading blogs : ' + error.toString());
+      return;
     });
   }
 
@@ -40,6 +45,11 @@ export class HomeComponent implements OnInit {
       this.blogService.getAllBlogs().subscribe(data => {
         this.blogs = data;
       });
+    },
+    (error) => {
+      alert('Something went wrong. Please try again later.');
+      console.log('Error while deleting blog : ' + error.toString());
+      return;
     });
   }
 

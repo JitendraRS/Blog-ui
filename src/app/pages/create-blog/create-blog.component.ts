@@ -48,7 +48,8 @@ export class CreateBlogComponent implements OnInit {
         this.router.navigate(['/home']);
       },
       (error) => {
-        alert('Error creating blog : ' + error.toString());
+        alert('Something went wrong. Please try again later.');
+        console.log('Error creating blog : ' + error.toString());
         return;
       }
     );
