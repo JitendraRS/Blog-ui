@@ -41,10 +41,13 @@ export class HomeComponent implements OnInit {
     modelRef.result.then(() => {
       this.loadBlogs();
     });
-    //this.router.navigate(['/create-blog']);
   }
 
   deleteBlog(id: number) {
+    var result = confirm("Are you sure you want to delete?");
+    if (!result) {
+      return;
+    }
     this.blogService.deleteBlog(id).subscribe(
       (data) => {
         if (data) {
