@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -7,10 +7,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { BlogService } from '../../services/blog.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Blog } from '../../models/blog';
 import { CommonModule } from '@angular/common';
 import { BlogEditorComponent } from '../../components/blog-editor/blog-editor.component';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-edit-blog',
@@ -25,20 +25,13 @@ import { BlogEditorComponent } from '../../components/blog-editor/blog-editor.co
   styleUrls: ['./edit-blog.component.scss'],
 })
 export class EditBlogComponent implements OnInit {
-  blog: Blog = {
-    id: 0,
-    text: '',
-    userName: '',
-    dateCreated: new Date(),
-  } as Blog;
   blogForm: FormGroup;
-  blogId: number = 0;
+  @Input() blogId: number = 0;
 
   constructor(
     private fb: FormBuilder,
     private blogService: BlogService,
-    private route: ActivatedRoute,
-    private router: Router
+    public activeModal: NgbActiveModal
   ) {
     this.blogForm = this.fb.group({
       id: [0],
@@ -48,7 +41,6 @@ export class EditBlogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.blogId = this.route.snapshot.params['id'];
     if (this.blogId > 0) {
       this.blogService.getBlogById(this.blogId).subscribe((data) => {
         if (data != null) {
@@ -66,7 +58,7 @@ export class EditBlogComponent implements OnInit {
     this.blogService.updateBlog(updatedBlog).subscribe(
       (data) => {
         alert('Blog updated successfully');
-        this.router.navigate(['/home']);
+        this.activeModal.close();
       },
       (error) => {
         alert('Something went wrong. Please try again later.');

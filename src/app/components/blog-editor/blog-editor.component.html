@@ -1,23 +1,20 @@
-<div class="card">
-  <form [formGroup]="blogForm" (ngSubmit)="submitBlog()">
-    <div class="card-body">
-      <div class="row">
-        <label for="text">Text: </label>
-        <input type="text" id="text" name="text" formControlName="text">
-        <div *ngIf="text?.invalid" class="alert alert-danger">
-          <div *ngIf="text?.hasError('required')">Text is required</div>
-        </div>
-      </div>
-      <div class="row">
-        <label for="userName">Created By: </label>
-        <input type="text" id="userName" name="userName" formControlName="userName">
-        <div *ngIf="userName?.invalid" class="alert alert-danger">
-          <div *ngIf="userName?.hasError('required')">Created By is required</div>
-        </div>
-      </div>
-      <div class="row">
-        <button type="submit" class="btn btn-primary" [disabled]="blogForm.invalid">Save</button>
+  <form [formGroup]="blogForm" (ngSubmit)="submitBlog()" class="row g-3 needs-validation" novalidate>
+    <div class="col-md-12">
+      <label for="text" class="form-label">Text: </label>
+      <input type="text" class="form-control" id="text" formControlName="text">
+      <div *ngIf="text?.invalid" class="danger">
+        <div *ngIf="text?.hasError('required')"> Please enter a text.</div>      
       </div>
     </div>
+    <div class="col-md-12">
+      <label for="userName" class="form-label">Created By: </label>
+      <input type="text" class="form-control" id="userName" formControlName="userName">
+      <div *ngIf="userName?.invalid" class="danger">
+        <div *ngIf="userName?.hasError('required')">Please enter a user name.</div> 
+      </div>
+    </div>
+      <div class="col-12 button-align">
+        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-secondary" type="button" (click)="cancel()">Cancel</button>
+      </div>
   </form>
-</div>
