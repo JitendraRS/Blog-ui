@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Blog Management Application</h1>
+  <button type="button" class="btn btn-primary btn-align" (click)="createBlog()">New</button>
+  <div class="card card-align" *ngFor="let blog of blogs">
+    <div class="card-body">
+      <div class="card">
+        <div class="card-body">
+          {{ blog.text }}
+        </div>
+      </div>
+      <div class="row blog-card-footer">
+        <div class="col-sm-8 footer-text">
+          <p>Created: {{blog.userName}}</p>
+          <p>Created date : {{ currentDate }}</p>
+        </div>
+        <div class="col-sm-4 footer-btn">
+          <button type="button" class="btn btn-outline-secondary" (click)="editBlog(blog.id)">Edit</button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteBlog(blog.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
