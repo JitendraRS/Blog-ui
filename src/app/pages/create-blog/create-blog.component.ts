@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
-import { Router } from '@angular/router';
 import { Blog } from '../../models/blog';
 import {
   FormBuilder,
@@ -11,6 +10,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BlogEditorComponent } from '../../components/blog-editor/blog-editor.component';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-create-blog',
@@ -30,7 +30,7 @@ export class CreateBlogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private blogService: BlogService,
-    private router: Router
+    public activeModal: NgbActiveModal
   ) {
     this.blogForm = this.fb.group({
       id: [0],
@@ -45,7 +45,7 @@ export class CreateBlogComponent implements OnInit {
     this.blogService.createBlog(createdBlog).subscribe(
       (data) => {
         alert('Blog created successfully');
-        this.router.navigate(['/home']);
+        this.activeModal.close();
       },
       (error) => {
         alert('Something went wrong. Please try again later.');

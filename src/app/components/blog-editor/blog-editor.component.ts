@@ -9,6 +9,7 @@ import { BlogService } from '../../services/blog.service';
 import { Blog } from '../../models/blog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-blog-editor',
@@ -21,7 +22,8 @@ export class BlogEditorComponent implements OnInit {
   @Input() blogForm: any;
   @Output() onSubmitBlog = new EventEmitter<Blog>();
 
-  constructor(private blogService: BlogService) {}
+  constructor(private blogService: BlogService,
+    public activeModal: NgbActiveModal) {}
 
   get text() {
     return this.blogForm?.get('text');
@@ -50,5 +52,9 @@ export class BlogEditorComponent implements OnInit {
       return;
     }
     this.onSubmitBlog.emit(this.blogForm.value as Blog);
+  }
+
+  cancel(){
+    this.activeModal.dismiss();
   }
 }
