@@ -69,7 +69,8 @@ export class EditBlogComponent implements OnInit {
         this.router.navigate(['/home']);
       },
       (error) => {
-        alert('Error updating blog : ' + error.toString());
+        alert('Something went wrong. Please try again later.');
+        console.log('Error updating blog : ' + error.toString());
         return;
       }
     );
