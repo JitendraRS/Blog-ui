@@ -1,0 +1,23 @@
+<div class="card">
+  <form [formGroup]="blogForm" (ngSubmit)="submitBlog()">
+    <div class="card-body">
+      <div class="row">
+        <label for="text">Text: </label>
+        <input type="text" id="text" name="text" formControlName="text">
+        <div *ngIf="text?.invalid" class="alert alert-danger">
+          <div *ngIf="text?.hasError('required')">Text is required</div>
+        </div>
+      </div>
+      <div class="row">
+        <label for="userName">Created By: </label>
+        <input type="text" id="userName" name="userName" formControlName="userName">
+        <div *ngIf="userName?.invalid" class="alert alert-danger">
+          <div *ngIf="userName?.hasError('required')">Created By is required</div>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn btn-primary" [disabled]="blogForm.invalid">Save</button>
+      </div>
+    </div>
+  </form>
+</div>

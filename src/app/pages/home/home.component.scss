@@ -1,0 +1,30 @@
+.btn-align{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-align{
+    margin-bottom: 1rem;
+}
+
+.blog-card-footer{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 0px;
+    margin-left: 0px;
+
+    .footer-text{
+        display: flex;
+        flex: 1;
+        justify-content: left;
+        gap: 1rem;
+    }
+    .footer-btn{
+        display: flex;
+        flex: 1;
+        justify-content: right;
+        gap: 1rem;
+    }
+}
