@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
 
-##Setup instructions
+## Setup instructions
 
 Clone API reposotory using command : git clone https://github.com/JitendraRS/Blog-ui.git
 Open Blog-ui folder in Visual Studio code.
