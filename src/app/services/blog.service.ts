@@ -32,13 +32,4 @@ export class BlogService {
   deleteBlog(id: number): Observable<boolean> {
     return this.http.delete<boolean>(this.apiBaseUrl + '/blogs/' + id);
   }
-
-  // private getHttpOptions() {
-  //   return {
-  //     headers: new Headers({
-  //       'Content-Type': 'application/json'
-  //     })
-  //   };
-  // }
-
 }
