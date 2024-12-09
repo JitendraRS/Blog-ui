@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
 
+##Setup instructions
+
+Clone API reposotory using command : git clone https://github.com/JitendraRS/Blog-ui.git
+Open Blog-ui folder in Visual Studio code.
+Run `npm install`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
